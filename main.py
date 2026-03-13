@@ -1,25 +1,24 @@
-#Declaramos una Variable llamada VALIDADOR como Verdadera
+# Declare a variable called VALIDATOR as True
 VALIDADOR = True
-#Pedimos el nombre de el producto con el input
-NombreProducto = input("Ingrese el nombre del producto: ")   
-#Creamos un bucle While con VALIDADOR para que se repita el proceso que queremos 
+# Ask for the product name via input
+NameProduct = input("Enter the product name: ")
+# Create a while loop with VALIDATOR so the process repeats until valid input is provided
 while VALIDADOR:
-#Iniciamos un try para solucionar un error que se explicara mas adelante     
+    # Start a try block to handle potential input errors
     try:
-#Creamos el paramatro "PrecioProducto"para pedir el precio del producto
-        PrecioProducto = float(input("Ingrese el precio del producto: "))
-#Creamos el paramatro "CantidadProducto"para pedir la cantidad del producto
-        CantidadProducto = int(input("¿Cuantos productos desea comprar?: "))
-#Creamos el parametro Total para hacer el proceso de Precio * Cantidad (producto)
-        Total = PrecioProducto*CantidadProducto
-#Imprimimos en pantalla el nombre del producto, precio unitario, la cantidad a comprar y el total a pagar        
-        print("Producto:",NombreProducto,"|Precio Unitario:",PrecioProducto,"|Cantidad:",CantidadProducto,"|Total a pagar:",Total )
-#Colocamos el validador y lo convertimos en falso para que se acabe el ciclo una vez cumplido el proceso              
+        # Ask for the product price and convert it to float
+        ProductPrice = float(input("Enter the product price: "))
+        # Ask for the quantity and convert it to int
+        ProuctQuantity = int(input("How many products do you want to buy?: "))
+        # Calculate total as price times quantity
+        Total = ProductPrice * ProuctQuantity
+        # Print the product, unit price, quantity, and total to pay
+        print("Product:", NameProduct, "| Unit Price:", ProductPrice, "| Quantity:", ProuctQuantity, "| Total to pay:", Total)
+        # Set the validator to False to end the loop once the process completes successfully
         VALIDADOR = False
-#Agregamos el except con el ValueError para que cuando ingresen un dato incorrecto el nos muestre el error
     except ValueError:
-#Mostramos en consola el mensaje con el error y lo que debe hacer       
-        print("¡ERROR! Debe ingresar un número")
+        # Show an error message when incorrect numeric input is entered
+        print("ERROR! You must enter a number")
 
 
    
