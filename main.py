@@ -1,25 +1,32 @@
-# Declare a variable called VALIDATOR as True
-VALIDADOR = True
-# Ask for the product name via input
-NameProduct = input("Enter the product name: ")
-# Create a while loop with VALIDATOR so the process repeats until valid input is provided
-while VALIDADOR:
-    # Start a try block to handle potential input errors
-    try:
-        # Ask for the product price and convert it to float
-        ProductPrice = float(input("Enter the product price: "))
-        # Ask for the quantity and convert it to int
-        ProuctQuantity = int(input("How many products do you want to buy?: "))
-        # Calculate total as price times quantity
-        Total = ProductPrice * ProuctQuantity
-        # Print the product, unit price, quantity, and total to pay
-        print("Product:", NameProduct, "| Unit Price:", ProductPrice, "| Quantity:", ProuctQuantity, "| Total to pay:", Total)
-        # Set the validator to False to end the loop once the process completes successfully
-        VALIDADOR = False
-    except ValueError:
-        # Show an error message when incorrect numeric input is entered
-        print("ERROR! You must enter a number")
-
+VALIDATOR_NAME = True
+while VALIDATOR_NAME:
+        product_name = input("Enter the product name: ").strip()
+        if product_name == "":
+            print("ERROR! Name cannot be empty.")
+        else:
+            VALIDATOR_NAME = False 
+VALIDATOR_PRICE = True
+while VALIDATOR_PRICE:
+        try:
+            product_price = float(input("Enter the product price: "))
+            if product_price < 0:
+                int("Force Error") 
+            else:
+                VALIDATOR_PRICE = False 
+        except ValueError:
+            print("ERROR! Invalid price (must be a positive number). Try again.")
+VALIDATOR_QUANTITY = True
+while VALIDATOR_QUANTITY:
+        try:
+            product_quantity = int(input("How many products do you want to buy?: "))
+            if product_quantity < 0:
+                int("Force Error")
+            else:
+                VALIDATOR_QUANTITY = False 
+        except ValueError:
+            print("ERROR! Invalid quantity (must be a positive integer). Try again.")
+total = product_price * product_quantity
+print(f"Product: {product_name} | Unit Price: {product_price} | Quantity: {product_quantity} | Total to pay: {total}")
 
 
    
