@@ -1,5 +1,5 @@
-Inventory = {} # Crea un diccionario global vacío para almacenar todos los productos
-def inventory_print(): # Define la función que imprimirá el contenido del inventario
+ 
+def inventory_print(Inventory): # Define la función que imprimirá el contenido del inventario
     product_added = {} # Crea un diccionario local temporal
     product_added.update(Inventory) # Copia el contenido del inventario global al diccionario local
     print("---------------------------------------------------------") # Imprime una línea decorativa

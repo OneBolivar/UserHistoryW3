@@ -5,11 +5,13 @@ from Option3 import product_search # Importa la función de búsqueda del módul
 import Option4 # Importa el módulo Option4 completo para acceder a sus variables
 import Option5 # Importa el módulo Option5 completo para acceder a sus variables    
 from Option6 import calculate_statistics # Importa la función de estadísticas del módulo Option3
-# from Option7 import save_csv
+from Option7 import save_csv
 
 
 
 def MenuOptions(): 
+    Inventory = {} # Crea un diccionario global vacío para almacenar todos los productos
+    Inventory_to_csv=[]
     VALIDATOR = True 
     while VALIDATOR: # Inicia el bucle que repetirá el menú hasta que se decida salir
         print("                   Welcome") 
@@ -34,26 +36,26 @@ def MenuOptions():
                 if (Options <= 0) or (Options > 7): 
                     int("Force Error") # Si el número es inválido, fuerza un error para ir al except
                 elif Options == 1: 
-                    Option2.Inventory.update(OptionNumber1(Options)) # Actualiza el inventario con lo que retorne OptionNumber1
+                    OptionNumber1(Inventory, Inventory_to_csv) 
+                   
                 elif Options == 2: 
-                    inventory_print() # Llama a la función que muestra los productos en pantalla
+                    inventory_print(Inventory) # Llama a la función que muestra los productos en pantalla
                 elif Options == 3:
                     product_name = input("Enter the name of the product you wish to search for: ")
-                    resultado = product_search(product_name)
+                    resultado = product_search(product_name, Inventory)
                     if resultado != {}:
                         print(f"Product Found: {resultado}")
                     else:
                         print("The product doesn't exist in the inventory")
                 elif Options == 4:
                     name = input("What product do you want to update?: ")
-                    Option4.product_update(name)
+                    Option4.product_update(Inventory, name)
                 elif Options == 5:
-                    Option5.product_delete()
+                    Option5.product_delete(Inventory)
                 elif Options == 6:
-                    calculate_statistics() # Ejecuta la función que procesa los datos numéricos
+                    calculate_statistics(Inventory) # Ejecuta la función que procesa los datos numéricos
                 elif Options == 7:
-                    print("save csv")
-                    # save_csv()
+                   print(save_csv( Inventory_to_csv))
                 elif Options == 8:
                     print("upload csv")                                    
                 elif Options == 9: 

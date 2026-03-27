@@ -1,9 +1,9 @@
-import Option2 
 
-def calculate_statistics():
+
+def calculate_statistics(Inventory):
     # 1. Fetch the inventory from the other module
     product_added = {}
-    product_added.update(Option2.Inventory)
+    product_added.update(Inventory)
 
     if not product_added:
         print("\n The inventory is empty.")

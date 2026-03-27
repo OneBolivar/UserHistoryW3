@@ -1,6 +1,6 @@
-def OptionNumber1(Options): # Define la función que recibe la opción elegida
-    Inventory= {} # Crea un diccionario vacío para almacenar los datos del nuevo producto
-    if Options == 1: 
+def OptionNumber1(Inventory, Inventory_to_csv): 
+
+    
         VALIDATOR_NAME = True 
         while VALIDATOR_NAME: 
                 product_name = input("Enter the product name: ").strip() # Pide el nombre y elimina espacios extras
@@ -37,4 +37,10 @@ def OptionNumber1(Options): # Define la función que recibe la opción elegida
             "price" : product_price, # Guarda el precio dentro del sub-diccionario del producto
             "quantity" : product_quantity, # Guarda la cantidad dentro del sub-diccionario del producto
         }
-        return(Inventory) # Devuelve el diccionario con la información registrada
+        Inventory_to_csv.append({
+            "Product": product_name,
+            "Price": product_price,
+            "Quantity": product_quantity
+        })
+        
+        return Inventory , Inventory_to_csv# Devuelve el diccionario con la información registrada

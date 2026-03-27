@@ -1,16 +1,16 @@
-import Option2
 
-def product_delete():
+
+def product_delete(Inventory):
     name = input("Enter the name of the product you wish to delete: ")
     VALIDATOR = True
     VALIDATOR_FALSE = False 
     VALIDATOR_X = False
     # Verificamos si existe en el inventario de Option2
-    if name in Option2.Inventory:
+    if name in Inventory:
         confirmar = input(f" Are you sure you want to delete '{name}'? (Yes/No): ").lower()
         
         if confirmar == 'yes':
-            del Option2.Inventory[name]
+            del Inventory[name]
             print(f" The product '{name}' has been successfully deleted.")
             return VALIDATOR
         else:

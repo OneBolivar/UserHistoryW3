@@ -1,11 +1,11 @@
-import Option2
 
-def product_update(name):
+
+def product_update(Inventory, name):
     VALIDATOR = True
     VALIDATOR_FALSE = False
     VALIDATOR_X =False
     # Verifica si existe el producto
-    producto = Option2.Inventory.get(name)
+    producto = Inventory.get(name)
     
     if not producto:
         print(f" Product '{name}' not found.")
