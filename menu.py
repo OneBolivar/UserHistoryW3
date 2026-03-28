@@ -1,20 +1,21 @@
-from Option1 import OptionNumber1 # Importa la función OptionNumber1 del módulo Option1
-from Option2 import inventory_print # Importa la función para imprimir el inventario de Option2
-import Option2 # Importa el módulo Option2 completo para acceder a sus variables
-from Option3 import product_search # Importa la función de búsqueda del módulo Option4
-import Option4 # Importa el módulo Option4 completo para acceder a sus variables
-import Option5 # Importa el módulo Option5 completo para acceder a sus variables    
-from Option6 import calculate_statistics # Importa la función de estadísticas del módulo Option3
+from Option1 import OptionNumber1 # Imports the OptionNumber1 function from the Option1 module
+from Option2 import inventory_print # Imports the function to print the inventory from Option2
+import Option2 # Imports the complete Option2 module to access its variables
+from Option3 import product_search # Imports the search function from the Option3 module
+import Option4 # Imports the complete Option4 module to access its variables
+import Option5 # Imports the complete Option5 module to access its variables    
+from Option6 import calculate_statistics # Imports the statistics function from the Option6 module
 from Option7 import save_csv
 from Option8 import upload_inventory_csv
 
 
 
 def MenuOptions(): 
-    Inventory = {} # Crea un diccionario global vacío para almacenar todos los productos
-    Inventory_to_csv=[]
+    # MAIN CONTROL: Initialize the central data structures
+    Inventory = {} # Creates an empty global dictionary to store all products
+    Inventory_to_csv=[]  # List for CSV export
     VALIDATOR = True 
-    while VALIDATOR: # Inicia el bucle que repetirá el menú hasta que se decida salir
+    while VALIDATOR: # Starts the loop that will repeat the menu until exit is selected
         print("                   Welcome") 
         print("=" * 50) 
         print("=" * 50) 
@@ -29,18 +30,20 @@ def MenuOptions():
         print("9. Exit") 
         
         #---------------------------------------------------------
-        VALIDATOR_OPTIONS = True # Variable para validar la entrada del usuario
-        try: # Inicia bloque para manejo de errores (por si el usuario ingresa letras)
+        # INPUT VALIDATION: Ensure user selects valid menu option (1-9)
+        VALIDATOR_OPTIONS = True # Variable to validate user input
+        try: # Starts error handling block (in case the user enters letters)
             while VALIDATOR_OPTIONS: 
                 Options = float(input("What do you want to do?: "))
                 print("      ") 
+                # VALIDATION: Check if option is in valid range
                 if (Options <= 0) or (Options > 9): 
-                    int("Force Error") # Si el número es inválido, fuerza un error para ir al except
+                    int("Force Error") # If the number is invalid, forces an error to go to except
                 elif Options == 1: 
                     OptionNumber1(Inventory, Inventory_to_csv) 
                    
                 elif Options == 2: 
-                    inventory_print(Inventory) # Llama a la función que muestra los productos en pantalla
+                    inventory_print(Inventory) # Calls the function that displays the products on screen
                 elif Options == 3:
                     product_name = input("Enter the name of the product you wish to search for: ")
                     resultado = product_search(product_name, Inventory)
@@ -54,7 +57,7 @@ def MenuOptions():
                 elif Options == 5:
                     Option5.product_delete(Inventory)
                 elif Options == 6:
-                    calculate_statistics(Inventory) # Ejecuta la función que procesa los datos numéricos
+                    calculate_statistics(Inventory) # Executes the function that processes numerical data
                 elif Options == 7:
                    print(save_csv( Inventory_to_csv))
                 elif Options == 8:
@@ -65,8 +68,9 @@ def MenuOptions():
                     VALIDATOR = False
          
         #------------------------------------------------------------        
-        except ValueError: # Se ejecuta si el usuario ingresa algo que no es un número o una opción inválida
+        # ERROR HANDLING: Catch invalid inputs (non-numeric or out-of-range)
+        except ValueError: # Executes if the user enters something that is not a number or an invalid option
             print("---------------------------------------") 
-            print("Error only shows the displayed options") # Mensaje de error al usuario
+            print("Error only shows the displayed options") # Error message to the user
             print("---------------------------------------") 
             print("    ") 
