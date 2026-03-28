@@ -5,7 +5,7 @@ def product_delete(Inventory):
     VALIDATOR = True
     VALIDATOR_FALSE = False 
     VALIDATOR_X = False
-    # Verificamos si existe en el inventario de Option2
+    # We check if it exists in the Option2 inventory
     if name in Inventory:
         confirmar = input(f" Are you sure you want to delete '{name}'? (Yes/No): ").lower()
         
